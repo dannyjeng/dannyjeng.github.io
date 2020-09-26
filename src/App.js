@@ -6,6 +6,8 @@ import About from './components/about';
 import Contact from './components/contact';
 import PageNotFound from './components/page_not_found';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 function App() {
   return (
       <Router>
