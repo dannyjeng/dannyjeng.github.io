@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 
 class NavigationBar extends Component {
     render() {
         return (
-            <div>
+            <>
                 <Navbar
                 sticky="top"
                 bg="dark"
-                variant="dark">
+                variant="dark"
+                expand='lg'>
+                    <Container>
                     <Navbar.Brand>
                         Danny Jeng
                     </Navbar.Brand>
@@ -19,8 +22,9 @@ class NavigationBar extends Component {
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                     </Nav>
+                    </Container>
                 </Navbar>
-            </div>
+            </>
         )
     }
 }
