@@ -126,3 +126,10 @@ STATIC_URL = '/static/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000"
 ]
+
+# View localhost:8000/api/contact to see how this affects the api
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        ]
+}

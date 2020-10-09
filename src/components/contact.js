@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 class Contact extends Component {
     /**
@@ -32,7 +33,26 @@ class Contact extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state)
+        event.preventDefault()
+
+        axios.post("http://localhost:8000/api/contact/", 
+            { 
+                name: this.state.name,
+                email: this.state.email,
+                message: this.state.message,
+            }, 
+            )
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    resetForm = () => {
+        this.setState({ name: '', email: '', message: '' });
     }
 
     render() {
@@ -41,7 +61,7 @@ class Contact extends Component {
                 <h1>Contact</h1>
                 <Form className="contact-form">
                     <Form.Row>
-                        <Form.Group as={Col} controlID="formGridFullName">
+                        <Form.Group as={Col} controlid="formGridFullName">
                             <Form.Label>Name</Form.Label>
                             <Form.Control 
                             required placeholder="Full Name" 
@@ -49,7 +69,7 @@ class Contact extends Component {
                             onChange={this.onNameChange}/>
                         </Form.Group>
 
-                        <Form.Group as={Col} controlID="formGridEmail">
+                        <Form.Group as={Col} controlid="formGridEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control 
                             required type="email" 
@@ -59,7 +79,7 @@ class Contact extends Component {
                         </Form.Group>
                     </Form.Row>
 
-                    <Form.Group controlID="formGridMessage">
+                    <Form.Group controlid="formGridMessage">
                         <Form.Label>Message</Form.Label>
                         <Form.Control 
                         required 
